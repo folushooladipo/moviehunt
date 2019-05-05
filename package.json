@@ -1,0 +1,10 @@
+{
+  "name": "moviehunt",
+  "version": "0.0.1",
+  "description": "Discover new movies and their ratings, duration, release year and much more.",
+  "main": "index.js",
+  "repository": "git@github.com:Maviza101/moviehunt.git",
+  "author": "Folusho Oladipo <foluski08@gmail.com>",
+  "license": "MIT",
+  "private": false
+}
