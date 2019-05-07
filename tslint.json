@@ -21,7 +21,7 @@
                 "ignore-pattern": "^import |^export {(.*?)}"
             }
         ],
-        "object-literal-key-quotes": true,
+        "object-literal-key-quotes": false,
         "max-classes-per-file": [ true, 1],
         "no-var-requires": false,
         "member-access": false,
