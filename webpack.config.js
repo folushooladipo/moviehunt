@@ -11,10 +11,10 @@ module.exports = {
     entry: {
         main: !nodeEnv || nodeEnv === "development" ?
             [
-                "./src/index.ts",
+                "./src/index.tsx",
                 "webpack-hot-middleware/client?reload=true"
             ] :
-            "./src/index.ts"
+            "./src/index.tsx"
     },
     devtool: "source-map",
     devServer: {
