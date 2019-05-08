@@ -6,10 +6,18 @@
     "engines": {
         "node": ">=8 <10"
     },
-    "repository": "git@github.com:Maviza101/moviehunt.git",
+    "repository": "https://github.com/Maviza101/moviehunt.git",
     "author": "Folusho Oladipo <foluski08@gmail.com>",
     "license": "MIT",
     "private": false,
+    "keywords": [
+        "movies",
+        "movie reviews",
+        "single page application",
+        "typescript",
+        "react",
+        "open source"
+    ],
     "scripts": {
         "start": "./node_modules/.bin/nodemon index.ts --exec \"./node_modules/.bin/ts-node -P tsconfig.json\" --watch \"types/**/*\"",
         "start:useBuilt": "node dist/index.js",

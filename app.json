@@ -1,0 +1,19 @@
+{
+    "name": "MovieHunt",
+    "description": "Discover new movies and their ratings, duration, release year and much more.",
+    "keywords": [
+        "movies",
+        "movie reviews",
+        "single page application",
+        "typescript",
+        "react",
+        "open source"
+    ],
+    "website": "https://moviehunt-staging.herokuapp.com/",
+    "repository": "https://github.com/Maviza101/moviehunt.git",
+    "buildpacks": [
+        {
+            "url": "heroku/nodejs"
+        }
+    ]
+}
