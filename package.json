@@ -17,7 +17,7 @@
         "clean": "./node_modules/.bin/del-cli dist/",
         "webpack-build:prod": "./node_modules/.bin/webpack --config webpack.config.production.js",
         "transpile-server-entry": "./node_modules/.bin/tsc index.ts --outDir dist/",
-        "copy-files": "./node_modules/.bin/copyfiles webpack.config.js index.html \"./assets/**/*\" ./dist/"
+        "copy-files": "./node_modules/.bin/copyfiles index.html \"./assets/**/*\" ./dist/"
     },
     "devDependencies": {
         "@types/dotenv": "^6.1.1",
