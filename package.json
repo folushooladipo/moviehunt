@@ -1,0 +1,70 @@
+{
+    "name": "moviehunt",
+    "version": "0.0.1",
+    "description": "Discover new movies and their ratings, duration, release year and much more.",
+    "main": "index.ts",
+    "engines": {
+        "node": ">=8 <10"
+    },
+    "repository": "https://github.com/Maviza101/moviehunt.git",
+    "author": "Folusho Oladipo <foluski08@gmail.com>",
+    "license": "MIT",
+    "private": false,
+    "keywords": [
+        "movies",
+        "movie reviews",
+        "single page application",
+        "typescript",
+        "react",
+        "open source"
+    ],
+    "scripts": {
+        "start": "./node_modules/.bin/nodemon index.ts --exec \"./node_modules/.bin/ts-node -P tsconfig.json\" --watch \"types/**/*\"",
+        "start:useBuilt": "node dist/index.js",
+        "build": "npm run clean && npm run webpack-build:prod && npm run transpile-server-entry && npm run copy-files",
+        "clean": "./node_modules/.bin/del-cli dist/",
+        "webpack-build:prod": "./node_modules/.bin/webpack --config webpack.config.production.js",
+        "transpile-server-entry": "./node_modules/.bin/tsc index.ts --outDir dist/",
+        "copy-files": "./node_modules/.bin/copyfiles index.html \"./assets/**/*\" ./dist/"
+    },
+    "devDependencies": {
+        "@types/dotenv": "^6.1.1",
+        "@types/express": "^4.16.1",
+        "@types/react": "^16.8.16",
+        "@types/react-dom": "^16.8.4",
+        "@types/react-redux": "^7.0.8",
+        "@types/react-router-dom": "^4.3.3",
+        "@types/redux": "^3.6.0",
+        "@types/redux-thunk": "^2.1.0",
+        "clean-webpack-plugin": "^2.0.1",
+        "copyfiles": "^2.1.0",
+        "css-loader": "^2.1.1",
+        "del-cli": "^1.1.0",
+        "mini-css-extract-plugin": "^0.6.0",
+        "nodemon": "^1.19.0",
+        "optimize-css-assets-webpack-plugin": "^5.0.1",
+        "style-loader": "^0.23.1",
+        "stylint": "^1.5.9",
+        "stylus": "^0.54.5",
+        "stylus-loader": "^3.0.2",
+        "terser-webpack-plugin": "^1.2.3",
+        "ts-loader": "^5.4.5",
+        "ts-node": "^8.1.0",
+        "tslint": "^5.16.0",
+        "typescript": "^3.4.5",
+        "webpack": "^4.30.0",
+        "webpack-cli": "^3.3.2",
+        "webpack-dev-middleware": "^3.6.2",
+        "webpack-hot-middleware": "^2.24.4"
+    },
+    "dependencies": {
+        "dotenv": "^8.0.0",
+        "express": "^4.16.4",
+        "react": "^16.8.6",
+        "react-dom": "^16.8.6",
+        "react-redux": "^7.0.3",
+        "react-router-dom": "^5.0.0",
+        "redux": "^4.0.1",
+        "redux-thunk": "^2.3.0"
+    }
+}
