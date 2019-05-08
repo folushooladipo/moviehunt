@@ -11,7 +11,13 @@
     "license": "MIT",
     "private": false,
     "scripts": {
-        "start": "./node_modules/.bin/nodemon index.ts --exec \"./node_modules/.bin/ts-node -P tsconfig.json\" --watch \"types/**/*\""
+        "start": "./node_modules/.bin/nodemon index.ts --exec \"./node_modules/.bin/ts-node -P tsconfig.json\" --watch \"types/**/*\"",
+        "start:useBuilt": "node dist/index.js",
+        "build": "npm run clean && npm run webpack-build:prod && npm run transpile-server-entry && npm run copy-files",
+        "clean": "./node_modules/.bin/del-cli dist/",
+        "webpack-build:prod": "./node_modules/.bin/webpack --config webpack.config.production.js",
+        "transpile-server-entry": "./node_modules/.bin/tsc index.ts --outDir dist/",
+        "copy-files": "./node_modules/.bin/copyfiles webpack.config.js index.html \"./assets/**/*\" ./dist/"
     },
     "devDependencies": {
         "@types/dotenv": "^6.1.1",
@@ -23,7 +29,9 @@
         "@types/redux": "^3.6.0",
         "@types/redux-thunk": "^2.1.0",
         "clean-webpack-plugin": "^2.0.1",
+        "copyfiles": "^2.1.0",
         "css-loader": "^2.1.1",
+        "del-cli": "^1.1.0",
         "mini-css-extract-plugin": "^0.6.0",
         "nodemon": "^1.19.0",
         "optimize-css-assets-webpack-plugin": "^5.0.1",
