@@ -1,13 +1,15 @@
 @import "./reset"
 @import "./colors"
 @import "./text"
+@import "./dimensions"
 
-html, #root-app
+html, .root-app
     color $general-text-color
     background $bg-color-for-app
     font-family $general-fonts
+    font-weight 300
 
-#root-app
+.root-app
     display block
     box-sizing border-box
     width 100vw
@@ -20,9 +22,14 @@ html, #root-app
 
     .page
         display block
-        // box-sizing border-box
         width 100%
         height 100%
         padding 0
         margin 0
         background transparent
+
+    .page-section
+        padding 0 $app-gutter-size
+
+    .disabled-btn
+        cursor not-allowed
