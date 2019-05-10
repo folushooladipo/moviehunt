@@ -6,22 +6,24 @@ export default class Navbar extends React.Component {
     render() {
         return (
             <div className="page-section navbar-container">
-                <div className="menu-btn-container">
-                    <MdMenu size="1.5em" className="menu-btn" />
-                </div>
-                <div className="go-home-btn-container">
-                    <Link
-                        to="/"
-                        className="go-home-link"
-                        title="Go to the homepage."
-                    >
-                        <img
-                            src="/moviehunt-logo-icon-only.png"
-                            alt="MovieHunt logo"
-                            className="moviehunt-logo"
-                        />
-                        <span className="app-name">MovieHunt</span>
-                    </Link>
+                <div className="menu-go-home-btns-container">
+                    <div className="menu-btn-container">
+                        <MdMenu size="1.5em" className="menu-btn" />
+                    </div>
+                    <div className="go-home-btn-container">
+                        <Link
+                            to="/"
+                            className="go-home-link"
+                            title="Go to the homepage."
+                        >
+                            <img
+                                src="/moviehunt-logo-icon-only.png"
+                                alt="MovieHunt logo"
+                                className="moviehunt-logo"
+                            />
+                            <span className="app-name">MovieHunt</span>
+                        </Link>
+                    </div>
                 </div>
                 <div className="nav-btns-container">
                     <div className="tab-chooser-container">
