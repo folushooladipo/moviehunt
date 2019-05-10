@@ -1,10 +1,14 @@
 import * as React from "react"
 import { Link } from "react-router-dom"
+import { MdMenu } from "react-icons/md"
 
 export default class Navbar extends React.Component {
     render() {
         return (
             <div className="page-section navbar-container">
+                <div className="menu-btn-container">
+                    <MdMenu size="1.5em" className="menu-btn" />
+                </div>
                 <div className="go-home-btn-container">
                     <Link
                         to="/"
