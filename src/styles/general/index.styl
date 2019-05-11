@@ -2,6 +2,7 @@
 @import "./colors"
 @import "./text"
 @import "./dimensions"
+@import "./values.styl"
 
 html, .root-app
     color $general-text-color
@@ -9,16 +10,35 @@ html, .root-app
     font-family $general-fonts
     font-weight 300
 
+    .app-name
+        font-family "Andale Mono", "Cutive Mono", monospace
+        font-size 16px
+        line-height 18px
+
+    input
+        border 0
+        box-sizing border-box
+        width 100%
+        height $general-input-field-height
+        padding 15px 32px
+        background $bg-color-for-app
+        color $white
+        font-family Hind
+        font-size 20px
+        line-height 32px
+
+        &::placeholder
+            color $input-placeholder-color
+            font-family Hind
+            font-size 20px
+            line-height 32px
+
 .root-app
     display block
-    box-sizing border-box
     width 100vw
     max-width 100vw
     height 100vh
     max-height 100vh
-
-    *
-        box-sizing border-box
 
     .page
         display block
