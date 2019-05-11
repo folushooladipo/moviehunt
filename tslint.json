@@ -11,7 +11,7 @@
         "arrow-parens": false,
         "eofline": true,
         "interface-name": true,
-        "no-empty-interface": true,
+        "no-empty-interface": false,
         "no-namespace": false,
         "member-ordering": false,
         "max-line-length": [

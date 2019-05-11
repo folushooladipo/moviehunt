@@ -1,0 +1,89 @@
+.login-form-container
+    width 100%
+    padding 0 13.5%
+
+    .app-name-and-logo-container,
+    .username-input-container,
+    .password-input-container,
+    .attempt-login-btn-container,
+    .other-account-actions-container
+        width 100%
+        margin-top 32px
+
+        &:first-of-type
+            margin-top 0
+
+    .app-name-and-logo-container
+        display flex
+        justify-content center
+        align-items center
+        text-align center
+
+        .moviehunt-logo, .app-name
+            display inline-block
+
+        .moviehunt-logo
+            width 50px
+
+        .app-name
+            padding-left 10px
+
+    .attempt-login-btn-container
+        height $general-input-field-height
+
+    .attempt-login-btn
+        display flex
+        align-items center
+        justify-content center
+        width 100%
+        height 100%
+        background $blue-for-links-and-btns
+        color $white
+        text-align center
+        font-family Hind
+        font-size 20px
+        line-height 32px
+
+        &:hover
+            opacity $opacity-for-disabled-btn
+            cursor not-allowed
+
+    .other-account-actions-container
+        display flex
+        font-family Hind
+        margin-bottom 60px
+        font-size 20px
+        line-height 32px
+
+    .sign-up-option,
+    .password-recovery-option
+        flex-grow 2
+
+    .sign-up-option
+        .sign-up-persuasion-text
+            color #aeaeae
+
+        .sign-up-link
+            color $blue-for-links-and-btns
+
+            &:hover
+                opacity $opacity-for-disabled-btn
+                cursor not-allowed
+
+    .password-recovery-option
+        color #777
+        text-align right
+
+        .recover-password-link:hover
+            opacity $opacity-for-disabled-btn
+            cursor not-allowed
+
+@media $max-lg-exclusive
+    .login-form-container
+        .other-account-actions-container
+            flex-direction column
+
+        .sign-up-option,
+        .password-recovery-option
+            width 100%
+            text-align center
