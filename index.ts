@@ -3,6 +3,8 @@ import * as path from "path"
 import * as dotenv from "dotenv"
 import * as Compression from "compression"
 
+import indexRoute from "./server/routes"
+
 dotenv.config()
 const DEFAULT_PORT = 5000
 const port = process.env.PORT || DEFAULT_PORT
@@ -30,6 +32,8 @@ if (!nodeEnv || nodeEnv === "development") {
 
 // Compress assets using gzip
 app.use(Compression())
+
+app.use(indexRoute)
 
 // Serve up assets
 app.use(Express.static(path.join(__dirname, "./assets")))

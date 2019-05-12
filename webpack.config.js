@@ -24,6 +24,7 @@ module.exports = {
     entry: {
         main: !nodeEnv || nodeEnv === "development" ?
             [
+                // TODO: Rename to ./client/index....
                 "./src/index.tsx",
                 "webpack-hot-middleware/client?reload=true"
             ] :
