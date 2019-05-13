@@ -17,6 +17,7 @@ declare interface TopMovie {
     voteAverage: number
     voteCount: number
     releaseDate: string
+    posterUrl: string | null
 }
 
 declare type ApiCall = {

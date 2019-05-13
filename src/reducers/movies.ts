@@ -29,15 +29,7 @@ const reducers = {
     }),
     [FETCH_TOP_MOVIES_LIST]: (state: MoviesState, action): MoviesState => {
         const newState = { ...state }
-        const { topMoviesData } = action.payload
-        const topMovies: TopMovie[] = topMoviesData.results.map(movie => ({
-            id: movie.id,
-            title: movie.title,
-            overview: movie.overview,
-            voteCount: movie.vote_count,
-            voteAverage: movie.vote_average,
-            releaseDate: movie.release_date
-        }))
+        const topMovies: TopMovie[] = action.payload.topMovies
 
         newState.topMoviesData = {
             ...newState.topMoviesData,

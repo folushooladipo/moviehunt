@@ -4,7 +4,7 @@ import { IoMdRefresh } from "react-icons/io"
 import { connect } from "react-redux"
 import { bindActionCreators } from "redux"
 
-import { DEFAULT_ICON_SIZE } from "../../util/values"
+import { DEFAULT_ICON_SIZE, DEFAULT_MOVIE_POSTER_PATH } from "../../util/values"
 import { MoviesActions } from "../../reducers/movies"
 
 interface ITopMoviesProps {
@@ -35,6 +35,13 @@ class TopMovies extends React.Component<ITopMoviesProps> {
                             <div>Release date: { movie.releaseDate }</div>
                             <div>Average rating: { movie.voteAverage }</div>
                             <div>Total ratings: { movie.voteCount }</div>
+                            <div>
+                                <img
+                                    src={ movie.posterUrl || DEFAULT_MOVIE_POSTER_PATH }
+                                    alt={ `${ movie.title }'s poster image.` }
+                                    title={ movie.title }
+                                />
+                            </div>
                             <br/>
                             <br/>
                         </div>
@@ -46,7 +53,7 @@ class TopMovies extends React.Component<ITopMoviesProps> {
     }
 
     render() {
-        const { isLoadingTopMovies, didLoadingTopMoviesFail, getTopMovies } = this.props
+        const { isLoadingTopMovies, didLoadingTopMoviesFail } = this.props
 
         return (
             <div className="top-movies-container">
@@ -58,7 +65,6 @@ class TopMovies extends React.Component<ITopMoviesProps> {
                         <MdSearch
                             size={ DEFAULT_ICON_SIZE }
                             className="search-btn"
-                            onClick={ () => getTopMovies() }
                         />
                     </div>
                 </div>
