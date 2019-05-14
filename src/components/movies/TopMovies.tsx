@@ -2,8 +2,8 @@ import * as React from "react"
 import { MdSearch } from "react-icons/md"
 import { connect } from "react-redux"
 import { bindActionCreators } from "redux"
-import { BounceLoader } from "react-spinners"
 import * as InfiniteScroller from "react-infinite-scroller"
+import LoadingIndicator from "react-loading"
 
 import { DEFAULT_ICON_SIZE, BLUE_FOR_BTNS_AND_LINKS } from "../../util/values"
 import { MoviesActions } from "../../reducers/movies"
@@ -80,10 +80,11 @@ class TopMovies extends React.Component<ITopMoviesProps> {
                         currentPage <= 1 &&
                         <div className="loading-animation-container">
                             <div className="bounce-loader-container">
-                                <BounceLoader
+                                <LoadingIndicator
+                                    type="bars"
                                     color={ BLUE_FOR_BTNS_AND_LINKS }
-                                    sizeUnit={ "px" }
-                                    size={ 80 }
+                                    width="80px"
+                                    height="80px"
                                 />
                             </div>
                         </div>
@@ -100,10 +101,11 @@ class TopMovies extends React.Component<ITopMoviesProps> {
                     loader={
                         <div className="loading-animation-container">
                             <div className="bounce-loader-container">
-                                <BounceLoader
+                                <LoadingIndicator
+                                    type="bars"
                                     color={ BLUE_FOR_BTNS_AND_LINKS }
-                                    sizeUnit={ "px" }
-                                    size={ 80 }
+                                    width="80px"
+                                    height="80px"
                                 />
                             </div>
                             <p className="loading-more-msg">Loading more top movies...</p>
