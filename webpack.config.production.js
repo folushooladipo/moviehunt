@@ -5,6 +5,7 @@ const dotenv = require("dotenv");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const TerserJSPlugin = require('terser-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 dotenv.config();
 const nodeEnv = process.env.NODE_ENV
@@ -22,7 +23,7 @@ module.exports = {
                 }
             }
         },
-        minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})]
+        minimizer: [new TerserJSPlugin({}), new UglifyJsPlugin(), new OptimizeCSSAssetsPlugin({})]
     },
     entry: {
         main: !nodeEnv || nodeEnv === "development" ?
@@ -42,7 +43,7 @@ module.exports = {
         new webpack.HotModuleReplacementPlugin(),
         new MiniCssExtractPlugin({
             filename: 'stylesheets/style.css'
-        }),
+        })
     ],
     output: {
         filename: "bundle.js",

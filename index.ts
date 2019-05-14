@@ -1,6 +1,9 @@
 import * as Express from "express"
 import * as path from "path"
 import * as dotenv from "dotenv"
+import * as Compression from "compression"
+
+import indexRoute from "./server/routes"
 
 dotenv.config()
 const DEFAULT_PORT = 5000
@@ -26,6 +29,11 @@ if (!nodeEnv || nodeEnv === "development") {
     // Serve up the transpiled bundle.js
     app.use(Express.static(path.join(__dirname, "./frontend-code")))
 }
+
+// Compress assets using gzip
+app.use(Compression())
+
+app.use(indexRoute)
 
 // Serve up assets
 app.use(Express.static(path.join(__dirname, "./assets")))
