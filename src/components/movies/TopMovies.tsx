@@ -1,10 +1,10 @@
 import * as React from "react"
 import { MdSearch } from "react-icons/md"
-import { IoMdRefresh } from "react-icons/io"
 import { connect } from "react-redux"
 import { bindActionCreators } from "redux"
+import { BounceLoader } from "react-spinners"
 
-import { DEFAULT_ICON_SIZE } from "../../util/values"
+import { DEFAULT_ICON_SIZE, BLUE_FOR_BTNS_AND_LINKS } from "../../util/values"
 import { MoviesActions } from "../../reducers/movies"
 import MovieCard from "./MovieCard"
 
@@ -58,7 +58,15 @@ class TopMovies extends React.Component<ITopMoviesProps> {
                 <div className="movie-list-section-container">
                     {
                         isLoadingTopMovies &&
-                        <IoMdRefresh size={ DEFAULT_ICON_SIZE } />
+                        <div className="loading-animation-container">
+                            <div className="bounce-loader-container">
+                                <BounceLoader
+                                    color={ BLUE_FOR_BTNS_AND_LINKS }
+                                    sizeUnit={ "px" }
+                                    size={ 80 }
+                                />
+                            </div>
+                        </div>
                     }
                     {
                         !isLoadingTopMovies && didLoadingTopMoviesFail &&
