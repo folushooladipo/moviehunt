@@ -1,0 +1,107 @@
+.movie-card-container
+    position relative
+    display inline-block
+    // NB: width-height ratio has to be 13:10.
+    width 32%
+    height 24.6%
+    min-width 300px
+    margin 0 2% 20px 0
+
+    &:nth-of-type(3n)
+        margin-right 0
+
+    .card-bottom-background
+        display block
+        border-radius 2px
+        box-shadow 0 2px 20px 0 #292B46
+        background-color $navbar-bg-color
+        width 100%
+        height 240px
+        margin-top -200px
+        z-index -1
+
+    .poster-image-container,
+    .movie-info-container
+        display inline-block
+        vertical-align bottom
+
+    .poster-image-container
+        width 46%
+        margin-left 4%
+
+        .poster-image
+            max-width 100%
+            height 252px
+
+    .movie-info-container
+        width 50%
+        padding 0 3%
+        font-family Roboto
+
+    .title-and-ratings-container
+        min-height 56px
+
+        .title-container,
+        .ratings-container
+            display inline-block
+
+        .title-container
+            width 80%
+            color $white
+            font-size 24px
+            line-height 28px
+            hyphens auto
+
+        .ratings-container
+            width 20%
+            color #64D899
+            font-size 12px
+            line-height 14px
+            text-align center
+
+        .ratings-underline
+            width 28%
+            height 2px
+            margin 2px auto 0
+            background #64D899
+
+    .release-date-container
+        margin 8px 0
+        color #bbb
+        font-size 12px
+        font-weight 300
+        line-height 14px
+
+    .movie-overview-container
+        color #bbb
+        font-size 14.4px
+        line-height 17px
+
+@media $max-md-exclusive
+    .movie-card-container
+        width 49%
+        height 24.6%
+        min-width 300px
+        margin 0 2% 20px 0
+
+        &:nth-of-type(3n)
+            margin 0 2% 20px 0
+
+        &:nth-of-type(2n)
+            margin-right 0
+
+@media $max-width-712-exclusive
+    .movie-card-container
+        width 60%
+        margin 0 0 20px
+
+        .card-bottom-background
+            height 260px
+            margin-top -225px
+
+        .title-and-ratings-container
+            height auto
+
+            .title-container
+                font-size 20px
+                line-height 24px

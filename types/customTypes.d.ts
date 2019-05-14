@@ -2,26 +2,28 @@ declare interface RootState {
     movies: MoviesState
 }
 
-declare interface MoviesState {
-    topMoviesData: {
-        topMovies: TopMovie[]
-        isLoading: boolean
-        didLoadingFail: boolean
-    }
-}
-
-declare interface TopMovie {
+declare interface Movie {
     id: number
     title: string
-    overview: number
+    overview: string
     voteAverage: number
     voteCount: number
     releaseDate: string
     posterUrl: string | null
 }
 
+declare interface MoviesState {
+    topMoviesData: {
+        topMovies: Movie[]
+        isLoading: boolean
+        didLoadingFail: boolean
+    }
+}
+
+declare type HTTPMethod = "GET" | "POST" | "PUT" | "DELETE"
+
 declare type ApiCall = {
     url: string
-    method?: "GET" | "POST" | "PUT" | "DELETE"
+    method?: HTTPMethod
     query?: object
 }

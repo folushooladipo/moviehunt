@@ -4,12 +4,13 @@ import { IoMdRefresh } from "react-icons/io"
 import { connect } from "react-redux"
 import { bindActionCreators } from "redux"
 
-import { DEFAULT_ICON_SIZE, DEFAULT_MOVIE_POSTER_PATH } from "../../util/values"
+import { DEFAULT_ICON_SIZE } from "../../util/values"
 import { MoviesActions } from "../../reducers/movies"
+import MovieCard from "./MovieCard"
 
 interface ITopMoviesProps {
     getTopMovies: () => void
-    topMovies: TopMovie[]
+    topMovies: Movie[]
     isLoadingTopMovies: boolean
     didLoadingTopMoviesFail: boolean
 }
@@ -27,24 +28,10 @@ class TopMovies extends React.Component<ITopMoviesProps> {
                 {
                     movies.length ?
                     movies.map((movie, index) =>
-                        <div
+                        <MovieCard
                             key={ `top-movie-${index}` }
-                        >
-                            <div>Title: { movie.title }</div>
-                            <div>Overview: { movie.overview }</div>
-                            <div>Release date: { movie.releaseDate }</div>
-                            <div>Average rating: { movie.voteAverage }</div>
-                            <div>Total ratings: { movie.voteCount }</div>
-                            <div>
-                                <img
-                                    src={ movie.posterUrl || DEFAULT_MOVIE_POSTER_PATH }
-                                    alt={ `${ movie.title }'s poster image.` }
-                                    title={ movie.title }
-                                />
-                            </div>
-                            <br/>
-                            <br/>
-                        </div>
+                            movie={ movie }
+                        />
                     ) :
                     <span>There are no movies to list.</span>
                 }
@@ -68,8 +55,6 @@ class TopMovies extends React.Component<ITopMoviesProps> {
                         />
                     </div>
                 </div>
-                <br/>
-                <br/>
                 <div className="movie-list-section-container">
                     {
                         isLoadingTopMovies &&

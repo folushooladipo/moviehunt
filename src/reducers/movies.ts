@@ -29,7 +29,7 @@ const reducers = {
     }),
     [FETCH_TOP_MOVIES_LIST]: (state: MoviesState, action): MoviesState => {
         const newState = { ...state }
-        const topMovies: TopMovie[] = action.payload.topMovies
+        const topMovies: Movie[] = action.payload.topMovies
 
         newState.topMoviesData = {
             ...newState.topMoviesData,

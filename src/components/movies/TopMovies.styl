@@ -1,15 +1,28 @@
 .top-movies-container
-    padding 2.38% 9.07%
+    padding 2% 7%
 
     .header-and-search-container
         display flex
+        margin-bottom 50px
 
     .header-container
         flex-grow 3
 
     .search-btn-container
+        display inline-flex
+        flex-direction column
+        justify-content center
+        align-items end
         flex-grow 2
-        text-align right
 
         .search-btn
             color $black
+
+    .top-movies-list-container
+        display flex
+        flex-wrap wrap
+
+@media $max-width-712-exclusive
+    .top-movies-container
+        .top-movies-list-container
+            justify-content center

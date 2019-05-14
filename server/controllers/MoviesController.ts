@@ -5,8 +5,8 @@ import * as superagent from "superagent"
 dotenv.config()
 const movieApiKey = process.env.MOVIE_API_KEY
 const REQUEST_TIMEOUT = 60000
-const TMDB_IMG_DEFAULT_SIZE = 500
-const TMDB_IMG_BASE_URL = `https://image.tmdb.org/t/p/w${TMDB_IMG_DEFAULT_SIZE}`
+const TMDB_IMG_DEFAULT_DIMENSIONS = "w185"
+const TMDB_IMG_BASE_URL = `https://image.tmdb.org/t/p/${TMDB_IMG_DEFAULT_DIMENSIONS}`
 
 export function getTopMovies(req: Request, res: Response) {
     const request = superagent.get
