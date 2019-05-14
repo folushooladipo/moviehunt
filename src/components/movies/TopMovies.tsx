@@ -3,16 +3,21 @@ import { MdSearch } from "react-icons/md"
 import { connect } from "react-redux"
 import { bindActionCreators } from "redux"
 import { BounceLoader } from "react-spinners"
+import * as InfiniteScroller from "react-infinite-scroller"
 
 import { DEFAULT_ICON_SIZE, BLUE_FOR_BTNS_AND_LINKS } from "../../util/values"
 import { MoviesActions } from "../../reducers/movies"
 import MovieCard from "./MovieCard"
 
 interface ITopMoviesProps {
-    getTopMovies: () => void
-    topMovies: Movie[]
+    getTopMovies: (pageNumber?: number) => void
     isLoadingTopMovies: boolean
     didLoadingTopMoviesFail: boolean
+    topMovies: Movie[]
+    pageSize: number
+    currentPage: number
+    totalPages: number
+    totalResults: number
 }
 
 class TopMovies extends React.Component<ITopMoviesProps> {
@@ -20,27 +25,41 @@ class TopMovies extends React.Component<ITopMoviesProps> {
         this.props.getTopMovies()
     }
 
-    renderListOfTopMovies(): React.ReactNode {
-        const movies = this.props.topMovies
+    renderListOfTopMovies(movies: Movie[]): React.ReactNode {
+        if (!movies.length) {
+            return null
+        }
 
         return (
             <div className="top-movies-list-container">
-                {
-                    movies.length ?
-                    movies.map((movie, index) =>
-                        <MovieCard
-                            key={ `top-movie-${index}` }
-                            movie={ movie }
-                        />
-                    ) :
-                    <span>There are no movies to list.</span>
-                }
+                { movies.map((movie, index) =>
+                    <MovieCard
+                        key={ `top-movie-${index}` }
+                        movie={ movie }
+                    />
+                )}
             </div>
         )
     }
 
+    renderNoMoviesMessage(): React.ReactNode {
+        if (this.props.isLoadingTopMovies) {
+            return null
+        }
+
+        if (!this.props.topMovies.length) {
+            return (
+                <p className="no-movies-found-msg">
+                    Sorry but there are no movies to list.
+                </p>
+            )
+        }
+    }
+
     render() {
-        const { isLoadingTopMovies, didLoadingTopMoviesFail } = this.props
+        const { isLoadingTopMovies, didLoadingTopMoviesFail, topMovies,
+            currentPage, totalPages, getTopMovies
+        } = this.props
 
         return (
             <div className="top-movies-container">
@@ -58,6 +77,7 @@ class TopMovies extends React.Component<ITopMoviesProps> {
                 <div className="movie-list-section-container">
                     {
                         isLoadingTopMovies &&
+                        currentPage <= 1 &&
                         <div className="loading-animation-container">
                             <div className="bounce-loader-container">
                                 <BounceLoader
@@ -72,23 +92,47 @@ class TopMovies extends React.Component<ITopMoviesProps> {
                         !isLoadingTopMovies && didLoadingTopMoviesFail &&
                         <div>Error. Failed to load top movies.</div>
                     }
-                    {
-                        !isLoadingTopMovies && !didLoadingTopMoviesFail &&
-                        this.renderListOfTopMovies()
-                    }
                 </div>
+                <InfiniteScroller
+                    pageStart={0}
+                    loadMore={ () => getTopMovies(currentPage + 1) }
+                    hasMore={ currentPage < totalPages }
+                    loader={
+                        <div className="loading-animation-container">
+                            <div className="bounce-loader-container">
+                                <BounceLoader
+                                    color={ BLUE_FOR_BTNS_AND_LINKS }
+                                    sizeUnit={ "px" }
+                                    size={ 80 }
+                                />
+                            </div>
+                            <p className="loading-more-msg">Loading more top movies...</p>
+                        </div>
+                    }
+                    initialLoad={ false }
+                    threshold={ 100 }
+                >
+                    { this.renderListOfTopMovies(topMovies) }
+                    { this.renderNoMoviesMessage() }
+                </InfiniteScroller>
             </div>
         )
     }
 }
 
 const mapStateToProps = (state: RootState) => {
-    const { topMovies, isLoading, didLoadingFail } = state.movies.topMoviesData
+    const { isLoading, didLoadingFail, topMovies, currentPage, totalPages,
+        totalResults, pageSize
+    } = state.movies.topMoviesData
 
     return {
-        topMovies,
         isLoadingTopMovies: isLoading,
-        didLoadingTopMoviesFail: didLoadingFail
+        didLoadingTopMoviesFail: didLoadingFail,
+        topMovies,
+        pageSize,
+        currentPage,
+        totalPages,
+        totalResults
     }
 }
 

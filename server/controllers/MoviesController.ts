@@ -5,23 +5,27 @@ import * as superagent from "superagent"
 dotenv.config()
 const movieApiKey = process.env.MOVIE_API_KEY
 const REQUEST_TIMEOUT = 60000
+const TMDB_DEFAULT_PAGE_NUMBER = 1
+const TMDB_DEFAULT_PAGE_SIZE = 20
 const TMDB_IMG_DEFAULT_DIMENSIONS = "w185"
-const TMDB_IMG_BASE_URL = `https://image.tmdb.org/t/p/${TMDB_IMG_DEFAULT_DIMENSIONS}`
+const TMDB_IMG_BASE_URL = `https://image.tmdb.org/t/p/${ TMDB_IMG_DEFAULT_DIMENSIONS }`
 
 export function getTopMovies(req: Request, res: Response) {
-    const request = superagent.get
+    const { pageNumber } = req.query
+    const ajaxClient = superagent.get
     const url = "https://api.themoviedb.org/3/discover/movie"
     const query = {
         api_key: movieApiKey,
         primary_release_year: (new Date()).getFullYear(),
         sort_by: "popularity.desc",
         "vote_average.gte": 7,
-        "vote_count.gte": 50,
+        "vote_count.gte": 20,
         include_adult: false,
-        include_video: true
+        include_video: true,
+        page: pageNumber > 1 ? pageNumber : TMDB_DEFAULT_PAGE_NUMBER
     }
 
-    request(url)
+    ajaxClient(url)
         .query(query)
         .timeout(REQUEST_TIMEOUT)
         .end((error, results) => {
@@ -37,7 +41,7 @@ export function getTopMovies(req: Request, res: Response) {
             const topMovies = topMoviesRawData.results.map(movie => {
                 const posterPath = movie.poster_path || movie.backdrop_path
                 const posterUrl = posterPath ?
-                    `${TMDB_IMG_BASE_URL}${posterPath}` :
+                    `${ TMDB_IMG_BASE_URL }${ posterPath }` :
                     null
 
                 return {
@@ -50,9 +54,16 @@ export function getTopMovies(req: Request, res: Response) {
                     posterUrl
                 }
             })
+            const { page: currentPage, total_results: totalResults,
+                total_pages: totalPages
+            } = topMoviesRawData
 
             res.json({
-                topMovies
+                topMovies,
+                pageSize: TMDB_DEFAULT_PAGE_SIZE,
+                currentPage,
+                totalPages,
+                totalResults
             })
         })
 }

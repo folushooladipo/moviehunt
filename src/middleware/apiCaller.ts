@@ -46,7 +46,10 @@ export default function apiCaller() {
             })
 
             return requestPromise
-                .then((payload => {
+                .then((requestResult => {
+                    const payload = action.payload ?
+                        { ...action.payload, ...requestResult } :
+                        requestResult
                     dispatch({
                         ...action,
                         payload
@@ -54,7 +57,7 @@ export default function apiCaller() {
                 }))
                 .catch(error => {
                     dispatch({
-                        type: `${actionType}_FAILURE`,
+                        type: `${ actionType }_FAILURE`,
                         error
                     })
                 })

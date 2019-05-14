@@ -14,9 +14,13 @@ declare interface Movie {
 
 declare interface MoviesState {
     topMoviesData: {
-        topMovies: Movie[]
         isLoading: boolean
         didLoadingFail: boolean
+        topMovies: Movie[]
+        pageSize: number
+        currentPage: number
+        totalPages: number
+        totalResults: number
     }
 }
 
