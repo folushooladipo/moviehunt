@@ -36,7 +36,7 @@ Here are the steps you need to follow to run this project on your computer:
 - **Clone this repo**: Enter this command in the terminal:
 
 ```bash
-git clone https://github.com/Maviza101/moviehunt.git
+git clone https://github.com/folushooladipo/moviehunt.git
 ```
 
 - **Install dependencies**: Do this by running the following command:
@@ -60,7 +60,7 @@ Wait for the app to start up. When you see a line of output in the terminal that
 ## Contributing
 
 Found a bug? Let me know about it by creating a new issue at
- [this link](https://github.com/Maviza101/moviehunt/issues). If you would also like to contribute a solution, consult [this document](https://help.github.com/articles/fork-a-repo/) for
+ [this link](https://github.com/folushooladipo/moviehunt/issues). If you would also like to contribute a solution, consult [this document](https://help.github.com/articles/fork-a-repo/) for
  instructions on how to create a fork of this project, implement your
  solutions and submit a pull request.
  
@@ -76,7 +76,7 @@ Lastly, you can send your
 
 ## License
 
-This project is authored by [Folusho Oladipo](https://github.com/Maviza101)
+This project is authored by [Folusho Oladipo](https://www.linkedin.com/in/folushooladipo/)
   and is licensed for your use, modification and distribution under
   [the MIT license](https://en.wikipedia.org/wiki/MIT_License). Feel
   free to hack, extend and share it!
